@@ -5,3 +5,7 @@ C:\Users\Christian\source\repos\Chapter 1\Chapter 1\obj\Debug\Chapter 1.csprojAs
 C:\Users\Christian\source\repos\Chapter 1\Chapter 1\obj\Debug\Chapter 1.csproj.CoreCompileInputs.cache
 C:\Users\Christian\source\repos\Chapter 1\Chapter 1\obj\Debug\Chapter 1.exe
 C:\Users\Christian\source\repos\Chapter 1\Chapter 1\obj\Debug\Chapter 1.pdb
+C:\Users\Christian\source\repos\Chapter 1\Chapter 1\bin\Debug\Chapter 1.exe.manifest
+C:\Users\Christian\source\repos\Chapter 1\Chapter 1\bin\Debug\Chapter 1.application
+C:\Users\Christian\source\repos\Chapter 1\Chapter 1\obj\Debug\Chapter 1.exe.manifest
+C:\Users\Christian\source\repos\Chapter 1\Chapter 1\obj\Debug\Chapter 1.application
