@@ -1,0 +1,5 @@
+﻿{ { "There once was ", "In a small town, ", "Once upon a time, " },
+{ "a man named ___. ", "a woman named ___. ", "a band of adventurers who called themselves ___. " },
+{ "a man named ___ ", "a woman named ___ ", "a band of adventurers who called themselves ___ " },
+{ "set out on an epic journey. ", "wanted to see the world. ", "lusted for riches. " },
+};
