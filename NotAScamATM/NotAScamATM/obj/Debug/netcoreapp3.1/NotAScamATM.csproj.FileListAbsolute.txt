@@ -1,0 +1,13 @@
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\bin\Debug\netcoreapp3.1\NotAScamATM.exe
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\bin\Debug\netcoreapp3.1\NotAScamATM.deps.json
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\bin\Debug\netcoreapp3.1\NotAScamATM.runtimeconfig.json
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\bin\Debug\netcoreapp3.1\NotAScamATM.runtimeconfig.dev.json
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\bin\Debug\netcoreapp3.1\NotAScamATM.dll
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\bin\Debug\netcoreapp3.1\NotAScamATM.pdb
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\obj\Debug\netcoreapp3.1\NotAScamATM.csprojAssemblyReference.cache
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\obj\Debug\netcoreapp3.1\NotAScamATM.csproj.CoreCompileInputs.cache
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\obj\Debug\netcoreapp3.1\NotAScamATM.AssemblyInfoInputs.cache
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\obj\Debug\netcoreapp3.1\NotAScamATM.AssemblyInfo.cs
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\obj\Debug\netcoreapp3.1\NotAScamATM.dll
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\obj\Debug\netcoreapp3.1\NotAScamATM.pdb
+C:\Users\Christian\source\repos\NotAScamATM\NotAScamATM\obj\Debug\netcoreapp3.1\NotAScamATM.genruntimeconfig.cache
