@@ -1,0 +1,6 @@
+1. store each line text from text.txt in new array (done)
+2. store each set of 10 lines in a new array (done) // Remove | characters
+3. store each part of each line (up to 5) in individual new arrays (done?)
+4. send each line to MadLibPrompt and return it as a new completed part string
+5. concatenate the completed parts into a sentence and store the new string
+6. when there are no more lines to read in the full text array, print all concatenated sentences with spaces.

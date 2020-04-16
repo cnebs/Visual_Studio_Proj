@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Chapter 1.exe" size="6648">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Chapter 1.exe" size="8184">
       <assemblyIdentity name="Chapter 1" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>j2DLtq9c5VvwKyrll+j8Gmn8JKHwJvmJA9LzQuZMnq4=</dsig:DigestValue>
+        <dsig:DigestValue>6qUd0b0H+p/7m2DMspophOkHjyXN0XfBHFr8hKRXu2M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,13 +62,13 @@
       <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Text.txt" size="364">
+  <file name="Text.txt" size="463">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>sr+cGOyh8mNcNoj04jCFHQsPu9ycTg1Tmu4T9yd7/Zs=</dsig:DigestValue>
+      <dsig:DigestValue>ZhEBVt2aPV/H4IFsvFGsqMOg2DqEDZSihn5r80Aeb5E=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -1,5 +1,14 @@
-﻿{ { "There once was ", "In a small town, ", "Once upon a time, " },
-{ "a man named ___. ", "a woman named ___. ", "a band of adventurers who called themselves ___. " },
-{ "a man named ___ ", "a woman named ___ ", "a band of adventurers who called themselves ___ " },
-{ "set out on an epic journey. ", "wanted to see the world. ", "lusted for riches. " },
-};
+"There once was "|"In a small town, "|"Once upon a time, "
+"a man named ___. "|"a woman named ___. "|"a band of adventurers who called themselves ___. "
+"a man named ___ "|"a woman named ___ "|"a band of adventurers who called themselves ___ "
+"set out on an epic journey. "|"wanted to see the world. "|"lusted for riches. "
+
+
+
+
+
+
+Additional text
+example 1 | example 2 | example 3
+example 4 | example 5 | example 6
+example 7 | example 8 | example 9

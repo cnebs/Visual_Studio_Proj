@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace Chapter_1
 {
 
     class Madlibs
     {
-        public static int[] version = { 0, 3, 1 };
+        public static int[] version = { 0, 4, 3 };
 
         public static void Main()
         {
@@ -23,9 +25,9 @@ namespace Chapter_1
             Console.Write("Epic mad libs game v{0}.{1}.{2}", version[0], version[1], version[2]);
             Console.Write(" by your ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("nigga: ");
+            Console.Write("friend: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("!!!!!C - VAC!!!!!\n");
+            Console.WriteLine("\n!!!!!C - VAC!!!!!\n");
 
             Console.WriteLine("+++++++++++++++++++++");
             Console.WriteLine("++++P  R  E  S  S++++");
@@ -43,25 +45,28 @@ namespace Chapter_1
         public static void Run()
         {
             Console.WriteLine("testing");
-            TextFunction sentence1 = new TextFunction();
-            Console.WriteLine(sentence1.text[0,0]);
-            
-            
-            // Using string[0] as the sentence text and string[1] as sentence type for filtering purposes
-            //
-            // Sentence 1 generation
-            //string[] firstSentData = SentenceOne();
-            //Console.WriteLine(firstSentData[0]);
-            //string firstSentence = firstSentData[0];
+            TextFunction.Sentence sentence1 = new TextFunction.Sentence(0, 9);
 
-            // Sentence 2 generation
-            //string secondSentData = SentenceTwo(firstSentData[1]);
-            //Console.WriteLine(secondSentData[0]);
-            //string secondSentence = secondSentData;
+            // test
+            Console.ReadKey(true);
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Printing sentence1.lineText [{0}]", (i + 1));
+                Console.WriteLine(sentence1.lineText[i]);
+                Console.ReadKey(true);
+            }
+            for (int a = 0; a < 10; a++)
+            {
+                for (int b = 0; b < 2; b++)
+                {
+                    Console.WriteLine("Printing sentence1.allPartsText [{0}]", (a));
+                    Console.WriteLine(sentence1.allPartsText[a, b]);
+                    Console.ReadKey(true);
+                }
+            }
 
-            Console.ForegroundColor = ConsoleColor.Blue;
+            // end test
 
-            //Console.WriteLine(firstSentence + "\n" + secondSentence);
 
 
             // Replay
@@ -71,25 +76,10 @@ namespace Chapter_1
             Console.Clear();
             Run();
         }
+        public long CountLinesLINQ(FileInfo file)
+                 => File.ReadLines(file.FullName).Count();
 
-        /*public static string MadLibInsert(string oldSentence, string wordType)
-        {
-            // Convert word type into string and prompt player to enter
-            if (wordType != null)
-            {
-                Console.Write("Enter {0}: ", wordType);
-            }
-            else
-            {
-                Console.Write("Enter a word: ");
-            }
-
-            // Take user input and replace blank in string
-            string newSentence = oldSentence.Replace("___", Console.ReadLine());
-            Console.Clear();
-            return newSentence;
-        }
-
+        /*
         public static string[] SentenceOne()
         {
             Random roll = new Random();
