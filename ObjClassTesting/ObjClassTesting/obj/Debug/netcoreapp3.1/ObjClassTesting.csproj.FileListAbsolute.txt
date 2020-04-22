@@ -1,0 +1,13 @@
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\bin\Debug\netcoreapp3.1\ObjClassTesting.exe
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\bin\Debug\netcoreapp3.1\ObjClassTesting.deps.json
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\bin\Debug\netcoreapp3.1\ObjClassTesting.runtimeconfig.json
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\bin\Debug\netcoreapp3.1\ObjClassTesting.runtimeconfig.dev.json
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\bin\Debug\netcoreapp3.1\ObjClassTesting.dll
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\bin\Debug\netcoreapp3.1\ObjClassTesting.pdb
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\obj\Debug\netcoreapp3.1\ObjClassTesting.csprojAssemblyReference.cache
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\obj\Debug\netcoreapp3.1\ObjClassTesting.csproj.CoreCompileInputs.cache
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\obj\Debug\netcoreapp3.1\ObjClassTesting.AssemblyInfoInputs.cache
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\obj\Debug\netcoreapp3.1\ObjClassTesting.AssemblyInfo.cs
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\obj\Debug\netcoreapp3.1\ObjClassTesting.dll
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\obj\Debug\netcoreapp3.1\ObjClassTesting.pdb
+C:\Users\Christian\source\repos\ObjClassTesting\ObjClassTesting\obj\Debug\netcoreapp3.1\ObjClassTesting.genruntimeconfig.cache

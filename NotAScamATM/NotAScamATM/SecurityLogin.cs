@@ -6,15 +6,7 @@ namespace NotAScamATM
     {
         static void Main()
         {
-			Console.WriteLine("-----------------------------");
-			Console.WriteLine("| ScamTrust ATM Secure Menu |");
-			Console.WriteLine("|                           |");
-			Console.WriteLine("|                           |");
-			Console.WriteLine("|  Welcome to ScamTrust.    |");
-			Console.WriteLine("|                           |");
-			Console.WriteLine("|  Please insert your card. |");
-			Console.WriteLine("|                           |");
-			Console.WriteLine("-----------------------------");
+			InsertCard();
 			Console.ReadKey(true);
 
 			int attempts = 0;
@@ -30,7 +22,25 @@ namespace NotAScamATM
 				{
 					Menu.MainMenu(cardNumInput);
 				}
-				attempts++;
+				else
+				{
+					attempts++;
+					Console.Clear();
+					InsertCard();
+				}
+			}
+
+			static void InsertCard()
+			{
+				Console.WriteLine("-----------------------------");
+				Console.WriteLine("| ScamTrust ATM Secure Menu |");
+				Console.WriteLine("|                           |");
+				Console.WriteLine("|                           |");
+				Console.WriteLine("|  Welcome to ScamTrust.    |");
+				Console.WriteLine("|                           |");
+				Console.WriteLine("|  Please insert your card. |");
+				Console.WriteLine("|                           |");
+				Console.WriteLine("-----------------------------");
 			}
 		}
     }

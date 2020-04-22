@@ -4,18 +4,24 @@ namespace NotAScamATM
 {
 	public class Menu
 	{
+
+		public Menu(string cardNo)
+		{
+			MainMenu(cardNo);
+		}
 		public static void MainMenu(string userCardNo)
 		{
 			Console.WriteLine("-----------------------------");
 			Console.WriteLine("| ScamTrust ATM Secure Menu |");
 			Console.WriteLine("|                           |");
-			Console.WriteLine("|  Welcome back, {}   |", userCardNo);
+			Console.WriteLine("|  Welcome back, {0} |", userCardNo);
 			Console.WriteLine("|  1. Check Balance         |");
 			Console.WriteLine("|  2. Make A Deposit        |");
 			Console.WriteLine("|  3. Withdraw Money        |");
 			Console.WriteLine("|  4. Logout                |");
 			Console.WriteLine("|                           |");
 			Console.WriteLine("-----------------------------");
+
 
 			switch (Console.ReadLine())
 			{
@@ -43,7 +49,7 @@ namespace NotAScamATM
 			Console.WriteLine("-----------------------------");
 			Console.WriteLine("| ScamTrust ATM Secure Menu |");
 			Console.WriteLine("|                           |");
-			Console.WriteLine("|                           |");
+			Console.WriteLine("|  Available Balance:       |");
 			Console.WriteLine("|                           |");
 			Console.WriteLine("|                           |");
 			Console.WriteLine("|                           |");
@@ -59,8 +65,8 @@ namespace NotAScamATM
 			Console.WriteLine("| ScamTrust ATM Secure Menu |");
 			Console.WriteLine("|                           |");
 			Console.WriteLine("|                           |");
-			Console.WriteLine("|                           |");
-			Console.WriteLine("|                           |");
+			Console.WriteLine("|  Please enter             |");
+			Console.WriteLine("|  amount to deposit.       |");
 			Console.WriteLine("|                           |");
 			Console.WriteLine("|                           |");
 			Console.WriteLine("-----------------------------");
