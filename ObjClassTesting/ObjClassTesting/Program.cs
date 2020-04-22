@@ -121,29 +121,36 @@ namespace ObjClassTesting
         {
             static Ingredient[] ingMasterList = IngArrayPopulate();
             static Inventory playerInv = new Inventory();
-            
+            public static string ingString = IngString();
+            public static bool firstIngInvalid = true;
+            public static bool secondIngInvalid = true;
+
             public static void CraftPotionMenu()
             {
-                Ingredient firstIng = ChooseFirstIng(ingMasterList);
-                while (firstIng == null)
+                
+
+                Ingredient firstIng = ChooseFirstIng();
+                while (firstIng == null && firstIngInvalid)
                 {
                     ErrorGeneral("Invalid entry.\n");
-                    firstIng = ChooseFirstIng(ingMasterList);
                 }
 
-                Ingredient secondIng = ChooseSecondIng(firstIng, ingMasterList);
+                Ingredient secondIng = ChooseSecondIng(firstIng);
                 while (secondIng == null || secondIng.name == firstIng.name)
                 {
                     if (secondIng.name == firstIng.name)
                     {
                         ErrorGeneral("Cannot combine two of the same ingredient.\n");
+                        WriteIngredient(firstIng);
                     }
                     else
                     {
                         ErrorGeneral("Invalid entry.\n");
+                        WriteIngredient(firstIng);
                     }
-                    secondIng = ChooseSecondIng(firstIng, ingMasterList);
+                    secondIng = ChooseSecondIng(firstIng);
                 }
+
                 Console.WriteLine("Make a potion with {0} and {1}? Y/N", firstIng.name, secondIng.name);
                 if (YesOrNo())
                 {
@@ -175,12 +182,8 @@ namespace ObjClassTesting
                     {
                         if (props1[i] == props2[j])
                         {
-                            Console.WriteLine("DEBUG: prop1 = prop 2 : {0} = {1}", props1[i], props2[j]);
-                            Console.WriteLine("DEBUG: i = {0}, j = {1}", i, j);
-                            Console.ReadKey(true);
                             return props1[i];
                         } else if (i == j && i == propLength - 1) {
-                            Console.ReadKey(true);
                             i = 0;
                             j++;
                         }
@@ -193,23 +196,33 @@ namespace ObjClassTesting
                 // add... add potion to inventory
             }
 
-            static void WriteDebug(Ingredient ingredient)
+            static void WriteIngredient(Ingredient ingredient)
             {
                 string name = ingredient.name.ToUpper();
                 Console.WriteLine(name + " Effects: " + ingredient.props[0] + ", " + ingredient.props[1]);
             }
 
-            static Ingredient ChooseFirstIng(Ingredient[] ingMasterList)
+            static string IngString()
+            {
+                string ingString = "";
+                foreach (Ingredient ing in ingMasterList)
+                {
+                    ingString += ing.name.ToUpper() + " ";
+                }
+                return ingString;
+            }
+
+            static Ingredient ChooseFirstIng()
             {
                 Ingredient firstIng;
 
-                Console.WriteLine("Choose first ingredient. \nInventory: Basil, Thyme, Oregano");
+                Console.WriteLine("Choose first ingredient. \nInventory: {0}", ingString);
 
                 string input = Console.ReadLine();
-                if (GetIngredient(ingMasterList, input) != null)
+                if (GetIngredient(input) != null)
                 {
-                    firstIng = GetIngredient(ingMasterList, input);
-                    WriteDebug(firstIng);
+                    firstIng = GetIngredient(input);
+                    WriteIngredient(firstIng);
                     return firstIng;
                 }
                 else
@@ -218,17 +231,17 @@ namespace ObjClassTesting
                 }
             }
 
-            static Ingredient ChooseSecondIng(Ingredient firstIng, Ingredient[] ingMasterList)
+            static Ingredient ChooseSecondIng(Ingredient firstIng)
             {
                 Ingredient secondIng;
 
-                Console.WriteLine("Choose second ingredient. Basil, Thyme, Oregano");
+                Console.WriteLine("Choose second ingredient. \nInventory: {0}", ingString);
 
                 string input = Console.ReadLine();
-                if (GetIngredient(ingMasterList, input) != null)
+                if (GetIngredient(input) != null)
                 {
-                    secondIng = GetIngredient(ingMasterList, input);
-                    WriteDebug(secondIng);
+                    secondIng = GetIngredient(input);
+                    WriteIngredient(secondIng);
                     return secondIng;
                 }
                 else
@@ -244,20 +257,19 @@ namespace ObjClassTesting
                 Ingredient thyme = new Ingredient("thyme", "Restore health", "Enhance flavor");
                 Ingredient oregano = new Ingredient("oregano", "Fortify Italian", "Enhance flavor");
                 Ingredient ganja = new Ingredient("dude, weed", "Cure disease", "Fortify IQ");
+                Ingredient bong = new Ingredient("epic bong", "Cure disease", "Fortify IQ");
 
-                Ingredient[] ingMasterList = { basil, thyme, oregano, ganja };
+                Ingredient[] ingMasterList = { basil, thyme, oregano, ganja , bong};
                 return ingMasterList;
             }
 
-            static Ingredient GetIngredient(Ingredient[] ingMasterList, string input)
+            static Ingredient GetIngredient(string input)
             {
-                Ingredient[] ingredients = ingMasterList;
-
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i <= ingMasterList.GetUpperBound(0); i++)
                 {
-                    if (ingredients[i].name == input)
+                    if (ingMasterList[i].name == input)
                     {
-                        return ingredients[i];
+                        return ingMasterList[i];
                     }
                 }
                 return null;
