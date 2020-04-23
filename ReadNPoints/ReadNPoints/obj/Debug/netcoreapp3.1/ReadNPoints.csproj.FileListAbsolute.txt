@@ -1,0 +1,13 @@
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\bin\Debug\netcoreapp3.1\ReadNPoints.exe
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\bin\Debug\netcoreapp3.1\ReadNPoints.deps.json
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\bin\Debug\netcoreapp3.1\ReadNPoints.runtimeconfig.json
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\bin\Debug\netcoreapp3.1\ReadNPoints.runtimeconfig.dev.json
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\bin\Debug\netcoreapp3.1\ReadNPoints.dll
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\bin\Debug\netcoreapp3.1\ReadNPoints.pdb
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\obj\Debug\netcoreapp3.1\ReadNPoints.csprojAssemblyReference.cache
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\obj\Debug\netcoreapp3.1\ReadNPoints.csproj.CoreCompileInputs.cache
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\obj\Debug\netcoreapp3.1\ReadNPoints.AssemblyInfoInputs.cache
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\obj\Debug\netcoreapp3.1\ReadNPoints.AssemblyInfo.cs
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\obj\Debug\netcoreapp3.1\ReadNPoints.dll
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\obj\Debug\netcoreapp3.1\ReadNPoints.pdb
+C:\Users\Christian\source\repos\ReadNPoints\ReadNPoints\obj\Debug\netcoreapp3.1\ReadNPoints.genruntimeconfig.cache
