@@ -27,6 +27,13 @@ namespace ReadNPoints
             ListOptions(pointList);
         }
 
+        static void FancyErrorMessage(SystemException e)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(e.Message);
+            Console.ResetColor();
+        }
+        
         static char[] CharInputExceptionHandler()
         {
             char[] inputNames = new char[2];
@@ -39,9 +46,7 @@ namespace ReadNPoints
             }
             catch (SystemException e)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(e.Message);
-                Console.ResetColor();
+                FancyErrorMessage(e);
             }
 
             while (!inputValid)
@@ -53,9 +58,7 @@ namespace ReadNPoints
                 }
                 catch (SystemException e)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(e.Message);
-                    Console.ResetColor();
+                    FancyErrorMessage(e);
                 }
             }
             
@@ -73,10 +76,11 @@ namespace ReadNPoints
                 Console.Clear(); DisplayList(points);
 
                 // Menu options
-                Console.WriteLine("\n1: Calculate distance between two points" +
-                    "\n2: Calculate longest possible line between points" +
-                    "\n3: Calculate shortest possible line between points" +
-                    "\n4: Back to list menu");
+                Console.WriteLine( "\n{0}\n{1}\n{2}\n{3}",
+                    "1: Calculate distance between two points",
+                    "2: Calculate longest possible line between points",
+                    "3: Calculate shortest possible line between points",
+                    "4: Back to list menu" );
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -141,9 +145,7 @@ namespace ReadNPoints
                     }
                     catch (SystemException e)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(e.Message);
-                        Console.ResetColor();
+                        FancyErrorMessage(e);
                     }
                     inputNames = CharInputExceptionHandler();
                 }
@@ -236,8 +238,9 @@ namespace ReadNPoints
         }
         static List<Point> InputPoints(List<Point> pointListMaster, bool clearList)
         {
-            List<Point> pointList = pointListMaster; Console.Clear();
-            Console.WriteLine("Enter a coordinate (X Y) or press enter to save current list.");
+            List<Point> pointList = pointListMaster; 
+            Console.Clear(); DisplayList(pointList);
+            Console.Write("\n{0}", "Enter a coordinate (X Y) or press enter to save current list: ");
             
             string input = "";
             // Clear list if bool arg true
@@ -277,6 +280,7 @@ namespace ReadNPoints
                     Console.WriteLine("Successfully added point {0} = ({1}, {2}).",
                         pointList.Last().Name, pointList.Last().X, pointList.Last().Y );
                     Console.ResetColor();
+                    Console.Write("\n{0}", "Enter a coordinate (X Y) or press enter to save current list: ");
 
                     nameChar++;
                     input = "";
@@ -300,7 +304,7 @@ namespace ReadNPoints
                 }
                 catch (SystemException e)
                 {
-                    Console.WriteLine(e.Message);
+                    FancyErrorMessage(e);
                     Console.ReadKey(true);
                 }
             }
@@ -331,38 +335,23 @@ namespace ReadNPoints
             bool inputValid = false;
             Point newPoint = new Point();
 
-            try
-            {
-                coordinates = input.Split(' ').Select(int.Parse).ToArray();
-                newPoint.X = coordinates[0];
-                newPoint.Y = coordinates[1];
-                inputValid = true;
-            }
-            catch (SystemException e)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(e.Message);
-                Console.ResetColor();
-            }
-
             // Replace input if exception is thrown
             while (!inputValid)
             {
                 try
                 {
-                    coordinates = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+                    coordinates = input.Split(' ').Select(int.Parse).ToArray();
                     newPoint.X = coordinates[0];
                     newPoint.Y = coordinates[1];
                     inputValid = true;
                 }
                 catch (SystemException e)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(e.Message);
-                    Console.ResetColor();
+                    FancyErrorMessage(e);
+                    Console.Write("\n{0}", "Enter data: ");
+                    input = Console.ReadLine();
                 }
             }
-
 
             return newPoint;
         }
