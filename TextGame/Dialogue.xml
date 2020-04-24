@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<text>
+	<initialtext>This is the text for the first module.</initialtext>
+
+	<options>
+		<option1>Option 1</option1>
+		<option2>Option 2</option2>
+		<option3>Option 3</option3>
+	</options>
+	<results>
+		<result1>Result 1</result1>
+		<result2>Result 2</result2>
+		<result3>Result 3</result3>
+	</results>
+	
+	
+</text>

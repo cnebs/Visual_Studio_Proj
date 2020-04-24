@@ -23,10 +23,11 @@ namespace ReadNPoints
 {
     class Program
     {
+        public static int sigFig = 4;
         static void Main()
         {
-            Console.WriteLine("C-Vac's epic code program very nice high quality v4.21.70" + 
-                "\nPress any key.");
+            Console.WriteLine("C-Vac's epic line segment simulator v5.22.1" + 
+                "\nPress any key to start.");
             Console.ReadKey(true);
             
             List<Point> pointList = new List<Point>();
@@ -71,40 +72,57 @@ namespace ReadNPoints
             DisplayList(points);
 
             // Menu options
-            Console.WriteLine( "\n{0}\n{1}\n{2}\n{3}",
+            Console.WriteLine( "\n{0}\n{1}\n{2}\n{3}\n{4}",
                 "1: Calculate distance between two points",
                 "2: Calculate longest possible line between points",
                 "3: Calculate shortest possible line between points",
-                "4: Back to list menu" );
+                "4: Change rounded digits of results",
+                "5: Back to list menu" );
             switch (Console.ReadLine())
             {
                 case "1": 
                     double[] distance = GetDistanceFromInput(points);
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("The distance between points {1} and {2} is: {0}",
-                        distance[0], Convert.ToChar((int)distance[1]), Convert.ToChar((int)distance[2]) );
-                    Console.ResetColor();
+                    DisplayResult(distance, 
+                        "The distance between points {1} and {2} is: {0}");
                     break;
                 case "2":
-                    // double[] longest = GetLongestLine(points);
-
+                    double[] longest = GetShortestOrLongestLine(points, false);
+                    DisplayResult(longest,
+                        "The longest line segment is line {1}{2} and is {0} units long.");
                     break;
                 case "3":
-                    double[] shortest = GetShortestLine(points);
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("The shortest line segment is line {1}{2} and is {0} units long.",
-                        shortest[0], Convert.ToChar((int)shortest[1]), Convert.ToChar((int)shortest[2]));
-                    Console.ResetColor();
+                    double[] shortest = GetShortestOrLongestLine(points, true);
+                    DisplayResult(shortest,
+                        "The shortest line segment is line {1}{2} and is {0} units long.");
                     break;
                 case "4":
-                    InputPoints(points, false);
+                    sigFig = ChangeSignificantFigures(sigFig);
                     break;
                 default:
+                    InputPoints(points, false);
                     break;
             }
             Console.WriteLine("\nPress enter to continue"); Console.ReadKey(true);
             OpsMenu(points);
-            
+
+            static void DisplayResult(double[] values, string message)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(message,
+                    Math.Round(values[0], sigFig), 
+                    Convert.ToChar((int)values[1]), 
+                    Convert.ToChar((int)values[2]) );
+                Console.ResetColor();
+            }
+
+            static int ChangeSignificantFigures(int sigDig)
+            {
+                Console.Clear();
+                Console.Write("Currently rounding to {0} digits.\n" +
+                    "Enter new significant digits to round to: ", sigDig);
+                sigDig = Convert.ToInt32(Console.ReadLine());
+                return sigDig;
+            }
 
             // Take console input of two points on the list and calculate their distance.
             static double[] GetDistanceFromInput(List<Point> pointList)
@@ -165,35 +183,41 @@ namespace ReadNPoints
             }
 
             // Shortest and Longest do not take user input so they return the full data set of distance and point names.
-            static double[] GetShortestLine(List<Point> pointList)
+            static double[] GetShortestOrLongestLine(List<Point> pointList, bool shortest)
             {
-                double[] shortestLine = { double.MaxValue, 0, 0 };
-                List<Point> allPoints = pointList;
+                double[] outputLine = { 0, 0, 0 } ;
+                if (shortest) { outputLine[0] = double.MaxValue; }
 
-                for (int i = 0; i < allPoints.Count; i++)
+                for (int i = 0; i < pointList.Count; i++)
                 {
-                    for (int j = 0; j < allPoints.Count; j++)
+                    for (int j = 0; j < pointList.Count; j++)
                     {
                         if (j == i) {} else
                         {
-                            double distance = GetDistance(allPoints[i], allPoints[j]);
+                            double distance = GetDistance(pointList[i], pointList[j]);
 
-                            if (distance < shortestLine[0])
+                            if (shortest)
                             {
-                                shortestLine[0] = distance;
-                                shortestLine[1] = allPoints[i].Name;
-                                shortestLine[2] = allPoints[j].Name;
+                                if (distance < outputLine[0])
+                                {
+                                    outputLine[0] = distance;
+                                    outputLine[1] = pointList[i].Name;
+                                    outputLine[2] = pointList[j].Name;
+                                }
+                            } else
+                            {
+                                if (distance > outputLine[0])
+                                {
+                                    outputLine[0] = distance;
+                                    outputLine[1] = pointList[i].Name;
+                                    outputLine[2] = pointList[j].Name;
+                                }
                             }
                         }
                     }
                 }
 
-                return shortestLine;
-            }
-
-            static double[] GetLongestLine(List<Point> pointList)
-            {
-                return null;
+                return outputLine;
             }
         }
 
