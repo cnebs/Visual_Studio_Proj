@@ -192,7 +192,7 @@ namespace ReadNPoints
                 {
                     for (int j = 0; j < pointList.Count; j++)
                     {
-                        if (j == i) {} else
+                        if (j != i)
                         {
                             double distance = GetDistance(pointList[i], pointList[j]);
 
