@@ -11,6 +11,7 @@ using System.Linq;
  * program if selected.
  * 
  * Future:
+ * Exception handling should be replaced with if/else conditions where possible
  * Add significant figures to all doubles
  * Add GetLongestLine()
  * 
@@ -28,15 +29,12 @@ namespace ReadNPoints
                 "\nPress any key.");
             Console.ReadKey(true);
             
-            // Make master point list from inputs
             List<Point> pointList = new List<Point>();
             pointList = InputPoints(pointList, false);
 
-            // Decide to add more items, start over, or continue to operations menu
             ListOptions(pointList);
         }
 
-        // Print error message in red then reset color
         static void FancyErrorMessage(SystemException e)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -47,15 +45,15 @@ namespace ReadNPoints
         // Parse a string from console input and return character array of length 2
         static char[] ReadTwoCharFromConsoleInput()
         {
-            
+
             char[] inputNames = new char[2];
             bool inputValid = false;
-            
+
             while (!inputValid)
             {
                 try
                 {
-                    inputNames = Console.ReadLine().ToUpper().Split(' ').Select(char.Parse).ToArray(); 
+                    inputNames = Console.ReadLine().ToUpper().Split(' ').Select(char.Parse).ToArray();
                     inputValid = true;
                 }
                 catch (SystemException e)
@@ -63,61 +61,50 @@ namespace ReadNPoints
                     FancyErrorMessage(e);
                 }
             }
-            
+
             return inputNames;
         }
 
         // Operations to be performed on a saved list
-        static void Operations(List<Point> pointList)
+        static void OpsMenu(List<Point> points)
         {
-            // Local masterlist of coordinates
-            List<Point> points = pointList;
+            DisplayList(points);
+
+            // Menu options
+            Console.WriteLine( "\n{0}\n{1}\n{2}\n{3}",
+                "1: Calculate distance between two points",
+                "2: Calculate longest possible line between points",
+                "3: Calculate shortest possible line between points",
+                "4: Back to list menu" );
+            switch (Console.ReadLine())
+            {
+                case "1": 
+                    double[] distance = GetDistanceFromInput(points);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("The distance between points {1} and {2} is: {0}",
+                        distance[0], Convert.ToChar((int)distance[1]), Convert.ToChar((int)distance[2]) );
+                    Console.ResetColor();
+                    break;
+                case "2":
+                    // double[] longest = GetLongestLine(points);
+
+                    break;
+                case "3":
+                    double[] shortest = GetShortestLine(points);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("The shortest line segment is line {1}{2} and is {0} units long.",
+                        shortest[0], Convert.ToChar((int)shortest[1]), Convert.ToChar((int)shortest[2]));
+                    Console.ResetColor();
+                    break;
+                case "4":
+                    InputPoints(points, false);
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine("\nPress enter to continue"); Console.ReadKey(true);
             OpsMenu(points);
             
-            // Main menu for operations
-            static void OpsMenu(List<Point> points)
-            {
-                Console.Clear(); DisplayList(points);
-
-                // Menu options
-                Console.WriteLine( "\n{0}\n{1}\n{2}\n{3}",
-                    "1: Calculate distance between two points",
-                    "2: Calculate longest possible line between points",
-                    "3: Calculate shortest possible line between points",
-                    "4: Back to list menu" );
-                switch (Console.ReadLine())
-                {
-                    case "1": 
-                        // distance stores the distance and names of the related coordinates.
-                        double[] distance = GetDistanceFromInput(points);
-
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("The distance between points {1} and {2} is: {0}",
-                            distance[0], Convert.ToChar((int)distance[1]), Convert.ToChar((int)distance[2]) );
-                        Console.ResetColor();
-                        break;
-                    case "2":
-                        // longest stores the distance and names of the related coordinates.
-                        // double[] longest = GetLongestLine(points);
-
-                        break;
-                    case "3":
-                        // shortest stores the distance and names of the related coordinates.
-                        double[] shortest = GetShortestLine(points);
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("The shortest line segment is line {1}{2} and is {0} units long.",
-                            shortest[0], Convert.ToChar((int)shortest[1]), Convert.ToChar((int)shortest[2]));
-                        Console.ResetColor();
-                        break;
-                    case "4":
-                        InputPoints(points, false);
-                        break;
-                    default:
-                        break;
-                }
-                Console.WriteLine("\nPress enter to continue"); Console.ReadKey(true);
-                OpsMenu(points);
-            }
 
             // Take console input of two points on the list and calculate their distance.
             static double[] GetDistanceFromInput(List<Point> pointList)
@@ -131,7 +118,7 @@ namespace ReadNPoints
                 // Take the input string and make sure the data is appropriate.
                 while (!inputValid) 
                 {
-                    Console.Clear(); DisplayList(pointList);
+                    DisplayList(pointList);
                     Console.Write("\n{0}", "Enter line (A B) to calculate the distance of: ");
                     inputNames = ReadTwoCharFromConsoleInput();
 
@@ -211,9 +198,10 @@ namespace ReadNPoints
         }
 
 
-        // Display the list of points
+        // Clear console and display the list of points
         static void DisplayList(List<Point> pointList)
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Points in the list: {0}. \n", pointList.Count);
             Console.ResetColor();
@@ -226,7 +214,7 @@ namespace ReadNPoints
         // Menu for editing the point list
         static void ListOptions(List<Point> pointList)
         {
-            Console.Clear(); DisplayList(pointList);
+            DisplayList(pointList);
 
             Console.WriteLine( "\n{0}\n{1}\n{2}\n{3}\n{4}", 
                 "1: Save list", 
@@ -239,7 +227,7 @@ namespace ReadNPoints
             switch (Console.ReadLine())
             {
                 case "1":
-                    Operations(pointList);
+                    OpsMenu(pointList);
                     break;
                 case "2":
                     ListOptions(InputPoints(pointList, false));
@@ -256,12 +244,9 @@ namespace ReadNPoints
             }
         }
         // Add to the list of points via user input
-        static List<Point> InputPoints(List<Point> pointListMaster, bool clearList)
+        static List<Point> InputPoints(List<Point> pointList, bool clearList)
         {
-            List<Point> pointList = pointListMaster;
-            
             string input = "";
-            // Clear list if bool arg true
             if (clearList)
             {
                 pointList.Clear();
@@ -272,7 +257,7 @@ namespace ReadNPoints
                 Console.ReadKey(true);
             }
 
-            Console.Clear(); DisplayList(pointList);
+            DisplayList(pointList);
             Console.Write("\n{0}", "Enter coordinates (X Y) or press Enter to save current list: ");
 
             // Manage the naming of new points
@@ -294,7 +279,7 @@ namespace ReadNPoints
                 if (input == "")
                 {   
                     // Save the list and return it.
-                    Console.Clear(); DisplayList(pointList);
+                    DisplayList(pointList);
                     return pointList;
                 }
                 else
@@ -303,7 +288,7 @@ namespace ReadNPoints
                     pointList.Add(ReadPoint(input));
                     pointList.Last().Name = nameChar;
 
-                    Console.Clear(); DisplayList(pointList);
+                    DisplayList(pointList);
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Successfully added point {0} = ({1}, {2}).",
                         pointList.Last().Name, pointList.Last().X, pointList.Last().Y );
@@ -325,7 +310,7 @@ namespace ReadNPoints
 
             while (deleteName == 'Z')
             {
-                Console.Clear(); DisplayList(oldList);
+                DisplayList(oldList);
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.Write("\nEnter point to delete: ");
                 Console.ResetColor();
