@@ -164,7 +164,7 @@ namespace ReadNPoints
                         FancyErrorMessage(e);
                     }
                 }
-
+                // ur gay
                 // If the data is valid, store result of distance formula method and point names
                 double[] results = { GetDistance(left, right), inputNames[0], inputNames[1] };
                 return results;
